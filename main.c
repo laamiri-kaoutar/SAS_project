@@ -167,6 +167,7 @@ void ajouter(Etudiant etudiants[], int *cmp){
         (*cmp)--,
     } else printf("cet etudiant n'est existe pas .");
 }
+void rechercher();
 int main(){
     Etudiant etudiants[200];
     int cmp;
