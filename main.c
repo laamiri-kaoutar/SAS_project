@@ -167,7 +167,108 @@ void ajouter(Etudiant etudiants[], int *cmp){
         (*cmp)--,
     } else printf("cet etudiant n'est existe pas .");
 }
-void rechercher();
+void rechercher(Etudiant etudiants[], int cmp){
+       char nom[50];
+    int found=-1;
+    printf("quel est le nom de l'etudiant que vous voulez rechercher ? ");
+    scanf("%s",nom);
+    for(int i=0 ; i< cmp ; i++){
+        if(strcmp(etudiants[i].nom, nom) == 0){
+        printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+        found=i;
+        break;
+        }
+    }
+    if (found<0) printf("cet etudiant n'est existe pas :");
+}
+
+void rechercher_Departement(Etudiant etudiants[], int cmp){
+    int choix;
+    int count=0;
+    printf("Veuillez choisir un département :\n");
+    printf("1. Informatique\n");
+    printf("2. Mathématiques\n");
+    printf("3. Physique\n");
+    printf("4. Chimie\n");
+    printf("5. Biologie\n");
+    printf("Entrez votre choix (1-5) : ");
+    scanf("%d", &choix);
+    switch (choix) {
+        case 1:
+            for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Informatique") == 0){
+            printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            }
+            }
+            break;
+        case 2:
+            for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Mathematiques") == 0){
+            printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            }
+            }
+            break;
+        case 3:
+            for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Physique") == 0){
+            printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            }
+            }
+            break;
+        case 4:
+            for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Chimie") == 0){
+            printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            }
+            }
+            break;
+        case 5:
+            for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Biologie") == 0){
+            printf("\n%-20s | %-20s | %-20f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            }
+            }
+            break;
+        default:
+            if(count<=3){
+            printf("\n le Choix invalide.\n");
+            menu_departement(departement);
+            count++;
+            } else break;
+    }
+
+}
+
+/*les statistiques*/
+void etudiantsDepart(Etudiant etudiants[],int cmp){
+    int inf=0,bio=0,chim=0,math=0,phy=0;
+    for(int i=0 ; i< cmp ; i++){
+            if(strcmp(etudiants[i].departement, "Biologie") == 0){
+                bio++;
+            }
+            if(strcmp(etudiants[i].departement, "Chimie") == 0){
+                chim++;
+            }
+            if(strcmp(etudiants[i].departement, "Physique") == 0){
+                phy++;
+            }
+            if(strcmp(etudiants[i].departement, "Informatique") == 0){
+                inf++;
+            }
+            if(strcmp(etudiants[i].departement, "Mathematiques") == 0){
+                math++;
+            }
+            }
+        printf("Nombre d'etudiants dans chaque departement :\n");
+        printf("%-20s : %d étudiants\n","Informatique", inf);
+        printf("%-20s : %d étudiants\n","Mathematiques", math);
+        printf("%-20s : %d étudiants\n","Biologie", bio);
+        printf("%-20s : %d étudiants\n","Chimie", chim);
+        printf("%-20s : %d étudiants\n","Physique", phy);
+
+
+
+}
 int main(){
     Etudiant etudiants[200];
     int cmp;
