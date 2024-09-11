@@ -265,8 +265,27 @@ void etudiantsDepart(Etudiant etudiants[],int cmp){
         printf("%-20s : %d étudiants\n","Biologie", bio);
         printf("%-20s : %d étudiants\n","Chimie", chim);
         printf("%-20s : %d étudiants\n","Physique", phy);
+}
+void totalEtudiants(int cmp){
+     printf("nombre total des etudiants : %d\n", cmp);
+}
+void filtrerSeuil(Etudiant etudiants[], int cmp){
+    int seuil;
+    int n= 0;
+    printf("Entrez le seuil de moyenne : ");
+    scanf("%d",&seuil);
+    for (int i = 0; i < cmp; i++)
+    {
+        if (etudiants[i].note_generale> seuil)
+        {
+            printf("\n%-20s | %-20s | %-20.2f | %-20d | %-20s | ",etudiants[i].nom,etudiants[i].prenom,etudiants[i].date_naissance,etudiants[i].departement,etudiants[i].note_generale);
+            n++;
+        }
+        
+    }
+    if(n== 0) printf("\nAucun etudiant n'a une moyenne superieure au seuil.\n");
 
-
+    
 
 }
 int main(){
